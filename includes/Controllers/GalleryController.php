@@ -34,6 +34,10 @@ class GalleryController {
             return;
         }
         $gallery_info = get_field("rng_gallery", $id);
+        $category_arr = array();
+        foreach ($gallery_info as $gallery) {
+            $category_arr[] = $gallery['category'];
+        }
         $this->public_enqueue_scripts();
         ob_start();
         require_once trailingslashit(ODT_TMP) . "gallery-content.php";
