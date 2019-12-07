@@ -79,7 +79,7 @@ class GalleryMetabox {
                             'type' => 'text'
                         )
                     ),
-                    'button_label' => 'Add',
+                    'button_label' => 'Add Image',
                     'min' => '',
                     'max' => '',
                 ),
