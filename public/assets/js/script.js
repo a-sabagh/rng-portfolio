@@ -28,4 +28,13 @@ jQuery.noConflict()(function ($) {
             displayTypeSpeed: 150,
         });
     });
+
+	//load more client side
+	$(".vlt-load-more-client-side").on('click',function(e){
+		e.preventDefault();
+		var portfolio = $("#vlt-portfolio-template").html();
+		    gridContainer.cubeportfolio('append',portfolio,function(){
+				$('nav.vlt-pagination-load-more-btn').remove();
+			});
+	});
 });
