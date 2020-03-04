@@ -1,8 +1,8 @@
 <?php
 
-namespace ODT;
+namespace PCT;
 
-use ODT\ServiceProviders\WebServiceProvider;
+use PCT\ServiceProviders\WebServiceProvider;
 
 defined('ABSPATH') || exit;
 
@@ -21,7 +21,7 @@ class Init {
     public function register_post_type() {
         $args = array(
             'public' => false,
-            'label' => 'Image Gallery',
+            'label' => 'تب دسته بندی ها',
             'show_in_menu' => true,
             'show_in_admin_bar' => true,
             'show_ui' => true,
@@ -31,14 +31,14 @@ class Init {
             'has_archive' => false,
             'supports' => array('title'),
         );
-        register_post_type('rng-gallery', $args);
+        register_post_type('rng-protfolio', $args);
     }
 
     public function boot_service_provider() {
         # Web Services
         $web_services = array(
-            Controllers\GalleryController::class => trailingslashit(__DIR__) . "Controllers/GalleryController.php",
-            Controllers\GalleryMetabox::class => trailingslashit(__DIR__) . "Controllers/GalleryMetabox.php",
+            Controllers\PortfolioController::class => trailingslashit(__DIR__) . "Controllers/PortfolioController.php",
+            Controllers\PortfolioMetabox::class => trailingslashit(__DIR__) . "Controllers/PortfolioMetabox.php",
         );
         # BootServices
         $this->app_service_providers($web_services);

@@ -1,6 +1,6 @@
 <?php
 
-namespace ODT\ServiceProviders;
+namespace PCT\ServiceProviders;
 
 defined('ABSPATH') || exit;
 

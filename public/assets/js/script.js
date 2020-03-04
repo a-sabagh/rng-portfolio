@@ -1,40 +1,22 @@
-jQuery.noConflict()(function ($) {
-    var gridContainer = $('#cubeportfolio');
-    gridContainer.imagesLoaded(function () {
-        gridContainer.cubeportfolio({
-            defaultFilter: '*',
-            filters: '.vlt-portfolio-grid-filters',
-            animationType: 'fadeOut',
-            layoutMode: 'grid', //mosaic
-            sortToPreventGaps: true,
-            gapHorizontal: 30,
-            gapVertical: 30,
-            gridAdjustment: 'responsive',
-            mediaQueries:
-                    [{
-                            width: 1170,
-                            cols: 3,
-                        }, {
-                            width: 991,
-                            cols: 3,
-                        }, {
-                            width: 767,
-                            cols: 2,
-                        }, {
-                            width: 575,
-                            cols: 1,
-                        }],
-            displayType: 'default',
-            displayTypeSpeed: 150,
-        });
+jQuery(document).ready(function ($) {
+    $(".pct-slider-list").slick({
+        rtl: true,
+        nextArrow: '<span class="next-slide"></span>',
+        prevArrow: '<span class="prev-slide"></span>',
+        autoplay: true
     });
-
-	//load more client side
-	$(".vlt-load-more-client-side").on('click',function(e){
-		e.preventDefault();
-		var portfolio = $("#vlt-portfolio-template").html();
-		    gridContainer.cubeportfolio('append',portfolio,function(){
-				$('nav.vlt-pagination-load-more-btn').remove();
-			});
-	});
+    $(".pct-content-item-wrapper").first().show();
+    $(".pct-category-list .category-item-click").on("click", function (e) {
+        $(".pct-preloader").show();
+        e.preventDefault();
+        $(this).addClass("active");
+        var contentSelector = $(this).attr("data-content");
+        console.log(contentSelector);
+        $(".pct-content-item-wrapper").hide();
+        $(contentSelector).show();
+        $(".pct-slider-list").slick('refresh');
+        setTimeout(function () {
+            $(".pct-preloader").hide();
+        }, 1000);
+    });
 });
